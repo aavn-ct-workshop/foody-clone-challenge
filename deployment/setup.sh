@@ -20,7 +20,7 @@ mvn clean package -Dquarkus.container-image.build=true -DskipTests -Dquarkus.con
 cd ..
 
 cp -v driver/target/kubernetes/kubernetes.yml deployment/services/driver.yml
-# cp -v foody-clone-configuration-server/target/kubernetes/kubernetes.yml deployment/services/configuration-server.yml
+cp -v foody-clone-configuration-server/k8s.yaml deployment/services/configuration-server.yml
 cp -v merchant/target/kubernetes/kubernetes.yml deployment/services/merchant.yml
 cp -v order-service/target/kubernetes/kubernetes.yml deployment/services/order-service.yml
 cp -v payment-service/target/kubernetes/kubernetes.yml deployment/services/payment-service.yml
