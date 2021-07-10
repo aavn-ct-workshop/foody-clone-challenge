@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { keyCloakService } from '../assets/js/services/keycloak-service';
+//import { keyCloakService } from '../assets/js/services/keycloak-service';
 export default {
   name: "Recommentdation",
   data() {
@@ -28,6 +28,7 @@ export default {
   created() {
     //Please check the authentication before fetching Merchants
     // Hint: checking based on the access-token is exist or not
+    let authenticated = false;
     if (authenticated) {
       this.fetchMerchants();
     } else {

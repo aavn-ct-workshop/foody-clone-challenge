@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { keyCloakService } from '../assets/js/services/keycloak-service';
+//import { keyCloakService } from '../assets/js/services/keycloak-service';
 
 export default {
   name: "NavBar",
