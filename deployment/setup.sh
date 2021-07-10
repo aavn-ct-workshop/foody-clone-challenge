@@ -2,6 +2,9 @@
 cd ../foody-clone
 docker build -t fooday .
 
+cd ../keycloak
+docker build -t keycloak .
+
 cd ../driver
 mvn clean package -Dquarkus.container-image.build=true -DskipTests -Dquarkus.container-image.group=""
 

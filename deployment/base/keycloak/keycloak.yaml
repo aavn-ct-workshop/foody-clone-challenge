@@ -41,7 +41,8 @@ spec:
           value: "true"
         - name: KEYCLOAK_FRONTEND_URL
           value: "http://localhost/auth"
-        image: quay.io/keycloak/keycloak:13.0.1
+        image: keycloak:latest
+        imagePullPolicy: Never
         name: keycloak
         ports:
         - containerPort: 8080
