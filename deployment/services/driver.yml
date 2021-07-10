@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.quarkus.io/build-timestamp: 2021-07-08 - 08:30:57 +0000
+    app.quarkus.io/build-timestamp: 2021-07-09 - 08:48:47 +0000
   labels:
     app.kubernetes.io/name: driver-service
     app.kubernetes.io/version: 1.0.0
@@ -23,25 +23,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.quarkus.io/build-timestamp: 2021-07-08 - 08:30:57 +0000
+    app.quarkus.io/build-timestamp: 2021-07-09 - 08:48:47 +0000
   labels:
-    app.kubernetes.io/version: 1.0.0
     app.kubernetes.io/name: driver-service
+    app.kubernetes.io/version: 1.0.0
   name: driver-service
   namespace: foody-clone
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/version: 1.0.0
       app.kubernetes.io/name: driver-service
+      app.kubernetes.io/version: 1.0.0
   template:
     metadata:
       annotations:
-        app.quarkus.io/build-timestamp: 2021-07-08 - 08:30:57 +0000
+        app.quarkus.io/build-timestamp: 2021-07-09 - 08:48:47 +0000
       labels:
-        app.kubernetes.io/version: 1.0.0
         app.kubernetes.io/name: driver-service
+        app.kubernetes.io/version: 1.0.0
       namespace: foody-clone
     spec:
       containers:
