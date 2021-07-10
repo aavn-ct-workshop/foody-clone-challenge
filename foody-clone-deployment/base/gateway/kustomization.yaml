@@ -1,3 +1,0 @@
-resources:
-  - traefik-ingress-controller.yaml
-  - traefik-ingress.yaml
