@@ -57,7 +57,7 @@ export default {
       return number * product.price;
     },
     async checkout() {
-      let order = {username: this.$store.getters["authentication/getUserName"], orderItems: this.allProducts};
+      let order = {username: localStorage.loggedUserName, orderItems: this.allProducts};
       const opts = {
         method: 'POST',
          headers: {
@@ -71,6 +71,8 @@ export default {
         if (data.status == 200) {
           alert('Your order is submitted, it will be deliver in next minutes!!!');
         } else {
+          console.log("deptrai"  +  localStorage.loggedUserName)
+          console.log(this.allProducts)
           alert('Your order can not process at this time, please try again!!!');
         }
       } catch (e) {

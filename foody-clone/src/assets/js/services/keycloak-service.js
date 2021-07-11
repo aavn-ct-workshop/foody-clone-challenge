@@ -1,9 +1,9 @@
 import * as Keycloak from "keycloak-js";
 
 let initOptions = {
-  url: '//Define your keycloak server',
-  realm: '//Define your realm',
-  clientId: '//Define your client-id',
+  url: 'http://localhost/auth',
+  realm: 'devnation',
+  clientId: 'vue-app',
   onLoad: "login-required",
 };
 

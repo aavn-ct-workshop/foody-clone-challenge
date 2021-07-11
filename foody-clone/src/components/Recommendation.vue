@@ -17,7 +17,9 @@
 </template>
 
 <script>
-//import { keyCloakService } from '../assets/js/services/keycloak-service';
+import { keyCloakService } from '../assets/js/services/keycloak-service';
+let accessToken
+let authenticated = false;
 export default {
   name: "Recommentdation",
   data() {
@@ -28,13 +30,29 @@ export default {
   created() {
     //Please check the authentication before fetching Merchants
     // Hint: checking based on the access-token is exist or not
-    let authenticated = false;
+    accessToken = this.$store.getters["authentication/getAccessToken"]
+    if(accessToken && (accessToken != null)) {
+      authenticated = true
+    } else {
+      authenticated = false
+    }
     if (authenticated) {
       this.fetchMerchants();
     } else {
-      //require user login via the keycloakService
-      //after login successfully, please update the access-token and username to the Vue store that you will use later.
-      //fetch merchants after login
+      keyCloakService.init().then((auth) => {
+        if(!auth) {
+          window.location.reload();
+        } else {
+          //require user login via the keycloakService
+          //after login successfully, please update the access-token and username to the Vue store that you will use later.
+          //fetch merchants after login
+          this.$store.dispatch('authentication/updateAccessToken', keyCloakService.keycloak.token)
+          accessToken = this.$store.getters["authentication/getAccessToken"]
+          localStorage.loggedUserName = keyCloakService.keycloak.idTokenParsed.preferred_username
+          console.log(localStorage.loggedUserName)
+          this.fetchMerchants();
+        }
+      });
     }
     
   },
@@ -44,7 +62,7 @@ export default {
         headers: {
           "Content-Type": "application/json",
           // Merchant API required the authentication. Thus, you need to add the access token with the Authorization header
-          Authorization: "Bearer " + 'specific access-token',
+          Authorization: "Bearer " + accessToken,
         },}).then(
         response => response.json().then(
           data => this.merchants = data
